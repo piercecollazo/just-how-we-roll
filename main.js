@@ -99,10 +99,10 @@ function rollDoubleD6(){
     doubleSixes.push(result1 + result2);
 
     const double6Mean = document.querySelector('#double-d6-rolls-mean');
-    double6Mean.innerText = meanAverage();
+    double6Mean.innerText = meanAverage(doubleSixes);
 
     const double6Median = document.querySelector('#double-d6-rolls-median');
-    double6Median.innerText = meanAverage();
+    double6Median.innerText = medianAverage(doubleSixes);
 
     const double6Roll1 = document.querySelector('#double-d6-roll-1');
     const double6Roll2 = document.querySelector('#double-d6-roll-2');
@@ -159,10 +159,10 @@ function rollD12(){
     twelves.push(result);
 
     const d12Mean = document.querySelector('#d12-rolls-mean');
-    d12Mean.innerText = meanAverage();
+    d12Mean.innerText = meanAverage(twelves);
 
-    const d12Mean = document.querySelector('#d12-rolls-median');
-    d12Mean.innerText = meanAverage();
+    const d12Median = document.querySelector('#d12-rolls-median');
+    d12Median.innerText = medianAverage(twelves);
 
     const d12Roll = document.querySelector('#d12-roll');
     const d12path = './images/numbers';
@@ -213,12 +213,12 @@ function rollD20(){
     twenties.push(result);
 
     const d20Mean = document.querySelector('#d20-rolls-mean');
-    d20Mean.innerText = meanAverage();
+    d20Mean.innerText = meanAverage(twenties);
 
-    const d20Mean = document.querySelector('#d20-rolls-median');
-    d20Mean.innerText = meanAverage();
+    const d20Median = document.querySelector('#d20-rolls-median');
+    d20Median.innerText = medianAverage(twenties);
 
-    const d20Roll = document.querySelector('#d6-roll');
+    const d20Roll = document.querySelector('#d20-roll');
     const d20path = './images/numbers';
 
     switch(result){
@@ -318,19 +318,13 @@ function resetAllRolls(){
             result += rollArr[i];
         }
 
-        return result / rollArr.length;
+        return Math.floor(result / rollArr.length);
     }
 
     function medianAverage(rollArr){
         rollArr.sort(function(a, b){return a -b});
 
-        let result = 0;
-
-        for(let i = 0; i < rollArr.length; i++){
-            result += rollArr[i];
-        }
-
-        return result / rollArr.length;
+        return rollArr[Math.floor(rollArr.length / 2)];
     }
 
 /*
