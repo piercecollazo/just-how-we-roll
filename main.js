@@ -336,31 +336,31 @@ function rollImage(dice, roll, roll2){
             case 11: d20Roll.src = `${d20path}/11.png`;
             break;
 
-            case 12: d20Roll.src = `${d20path}/6.png`;
+            case 12: d20Roll.src = `${d20path}/12.png`;
             break;
 
-            case 13: d20Roll.src = `${d20path}/6.png`;
+            case 13: d20Roll.src = `${d20path}/13.png`;
             break;
 
-            case 14: d20Roll.src = `${d20path}/6.png`;
+            case 14: d20Roll.src = `${d20path}/14.png`;
             break;
 
-            case 15: d20Roll.src = `${d20path}/6.png`;
+            case 15: d20Roll.src = `${d20path}/15.png`;
             break;
 
-            case 16: d20Roll.src = `${d20path}/6.png`;
+            case 16: d20Roll.src = `${d20path}/16.png`;
             break;
 
-            case 17: d20Roll.src = `${d20path}/6.png`;
+            case 17: d20Roll.src = `${d20path}/17.png`;
             break;
 
-            case 18: d20Roll.src = `${d20path}/6.png`;
+            case 18: d20Roll.src = `${d20path}/18.png`;
             break;
 
-            case 19: d20Roll.src = `${d20path}/6.png`;
+            case 19: d20Roll.src = `${d20path}/19.png`;
             break;
 
-            case 20: d20Roll.src = `${d20path}/6.png`;
+            case 20: d20Roll.src = `${d20path}/20.png`;
             break;
 
             default: d20Roll.src = './images/start/d20.png'
