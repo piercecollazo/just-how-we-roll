@@ -61,13 +61,9 @@ function rollD6(){
     let result = Math.floor(Math.random() * 6) + 1;
     sixes.push(result);
 
-    const d6Mean = document.querySelector('#d6-rolls-mean')
-    d6Mean.innerText = meanAverage(sixes);
+    insertText('#d6', sixes);
 
-    const d6Median = document.querySelector('#d6-rolls-median')
-    d6Median.innerText = medianAverage(sixes);
-
-    rollImage('d6', result)
+    rollImageShort('d6', result);
 }
 
 function rollDoubleD6(){
@@ -75,39 +71,27 @@ function rollDoubleD6(){
     let result2 = Math.floor(Math.random() * 6) + 1;
     doubleSixes.push(result1 + result2);
 
-    const double6Mean = document.querySelector('#double-d6-rolls-mean');
-    double6Mean.innerText = meanAverage(doubleSixes);
+    insertText('#double-d6', doubleSixes);
 
-    const double6Median = document.querySelector('#double-d6-rolls-median');
-    double6Median.innerText = medianAverage(doubleSixes);
-
-    rollImage('double d6', result1, result2);
+    rollImageShort('double d6', result1, result2);
 }
 
 function rollD12(){
     let result = Math.floor(Math.random() * 12) + 1;
     twelves.push(result);
 
-    const d12Mean = document.querySelector('#d12-rolls-mean');
-    d12Mean.innerText = meanAverage(twelves);
+    insertText('#d12', twelves);
 
-    const d12Median = document.querySelector('#d12-rolls-median');
-    d12Median.innerText = medianAverage(twelves);
-
-    rollImage('d12', result)
+    rollImageShort('d12', result);
 }
 
 function rollD20(){
     let result = Math.floor(Math.random() * 20) + 1;
     twenties.push(result);
 
-    const d20Mean = document.querySelector('#d20-rolls-mean');
-    d20Mean.innerText = meanAverage(twenties);
+    insertText('#d20', twenties);
 
-    const d20Median = document.querySelector('#d20-rolls-median');
-    d20Median.innerText = medianAverage(twenties);
-
-    rollImage('d20', result);
+    rollImageShort('d20', result);
 }
 
 function resetAllRolls(){
@@ -170,6 +154,7 @@ function resetAllRolls(){
 */
 
 // This helper function changes the dice images based on results of dice rolls to lessen the size of the dice functions themselves.
+// This function is rendered obsolete by a later stretch goal function (rollImageShort), but is here purely to show I did it :)
 function rollImage(dice, roll, roll2){
     // d6 roll
     if(dice === 'd6'){
@@ -367,4 +352,34 @@ function rollImage(dice, roll, roll2){
         }
     }
 
+}
+
+// A helper function that handles grabbing HTML queries for inner text.
+function insertText(select, diceArray){
+    document.querySelector(`${select}-rolls-mean`).innerText = meanAverage(diceArray);
+    document.querySelector(`${select}-rolls-median`).innerText = medianAverage(diceArray);
+}
+
+// A helper function that handles swapping images based off of dice rolls with much shorter code than manual loops.
+function rollImageShort(dice, roll1, roll2){
+    const d6Path = './images/d6';
+    const numbersPath = './images/numbers';
+
+    switch(dice){
+        case 'd6':
+            document.querySelector('#d6-roll').src = `${d6Path}/${roll1}.png`;
+        break;
+
+        case 'double d6':
+            document.querySelector('#double-d6-roll-1').src = `${d6Path}/${roll1}.png`;
+            document.querySelector('#double-d6-roll-2').src = `${d6Path}/${roll2}.png`;
+        break;
+
+        case 'd12' :
+            document.querySelector('#d12-roll').src = `${numbersPath}/${roll1}.png`;
+        break;
+
+        case 'd20' :
+            document.querySelector('#d20-roll').src = `${numbersPath}/${roll1}.png`;
+    }
 }
